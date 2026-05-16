@@ -389,14 +389,63 @@
 
     hr.divider { border: none; border-top: 1px solid var(--border-warm); margin: 40px 0; }
 
-    @media (max-width: 640px) {
-      .tool-grid { grid-template-columns: 1fr 1fr; }
-      .wrapper { padding: 24px 14px 60px; }
-      .tiers { gap: 16px; }
-      .stats-row { gap: 10px; }
+    /* TABLET */
+    @media (max-width: 900px) {
+      .tool-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+      .wrapper { padding: 28px 16px 64px; }
     }
-    @media (max-width: 400px) {
-      .tool-grid { grid-template-columns: 1fr; }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      header { padding: 32px 18px 28px; }
+      .eyebrow { font-size: 10px; margin-bottom: 10px; }
+      h1 { margin-bottom: 10px; }
+      header p { font-size: 14px; }
+
+      .wrapper { padding: 22px 14px 56px; }
+
+      /* Stats: tighter, allow 3-up to wrap nicely */
+      .stats-row { gap: 8px; margin-bottom: 24px; }
+      .stat-item { padding: 12px 14px; min-width: 0; flex: 1 1 calc(33% - 8px); }
+      .stat-num { font-size: 22px; }
+      .stat-label { font-size: 11px; }
+
+      /* Search: full width, larger tap target */
+      .search-wrap { margin-bottom: 28px; }
+      .search-wrap input { padding: 13px 14px 13px 38px; font-size: 16px; /* prevents iOS zoom */ }
+
+      /* Tier bar: stack tiers to single column */
+      .tier-bar { padding: 18px 16px; margin-bottom: 28px; border-radius: 8px; }
+      .tiers { flex-direction: column; gap: 14px; }
+      .tier { min-width: 0; }
+      .tier-items { font-size: 12.5px; line-height: 1.7; }
+
+      /* Categories */
+      .category { margin-bottom: 32px; }
+      hr.divider { margin: 28px 0; }
+
+      /* One column, full-width cards — easier to read on phone */
+      .tool-grid { grid-template-columns: 1fr; gap: 10px; }
+      .tool-card { padding: 16px; }
+      .card-name { white-space: normal; } /* allow long names to wrap */
+
+      /* Bigger tap targets */
+      .like-btn { padding: 9px 12px; font-size: 13px; }
+      .like-btn svg { width: 14px; height: 14px; }
+      .card-link { padding: 11px 12px; font-size: 13px; }
+
+      /* Disable hover-lift on touch — feels off without a hover state */
+      .tool-card:hover { transform: none; box-shadow: none; }
+
+      footer { padding: 22px 18px; }
+      footer p { font-size: 11px; }
+    }
+
+    /* SMALL MOBILE — pros/cons stack so they don't get squeezed */
+    @media (max-width: 380px) {
+      .pros-cons { grid-template-columns: 1fr; gap: 10px; }
+      .stats-row { flex-wrap: wrap; }
+      .stat-item { flex: 1 1 100%; }
     }
 
     /* ANIMATED LIKE */
